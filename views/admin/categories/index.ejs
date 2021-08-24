@@ -16,16 +16,16 @@
                 </tr>
             </thead>
             <tbody>
-                <% categories.forEach(categories => { %>
+                <% categories.forEach(category => { %>
                     <tr>
-                        <th><%= categories.id %></th>
-                        <th><%= categories.title %></th>
-                        <th><%= categories.slug %></th>
+                        <th><%= category.id %></th>
+                        <th><%= category.title %></th>
+                        <th><%= category.slug %></th>
                         <th>
-                            <button class="btn btn-warning">Editar</button>
+                            <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
 
-                            <form method="POST" action="/categories/delete" style="display: inline;">
-                                <input type="hidden" name="id" value="<%= categories.id %>">
+                            <form method="POST" action="/categories/delete" style="display: inline;" onsubmit="confirmarDelecao(event, this)">
+                                <input type="hidden" name="id" value="<%= category.id %>">
                                 <button class="btn btn-danger">Deletar</button>
                             </form>
                             
@@ -37,3 +37,12 @@
     </div>
 </body>
 <%- include ('../../partials/footer.ejs') %>
+<script>
+    function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decision =  confirm("Você quer deletar esta categoria ?");
+        if (decision){
+            form.submit();
+        }
+    }
+</script>
