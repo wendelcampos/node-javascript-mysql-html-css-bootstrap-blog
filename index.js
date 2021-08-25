@@ -5,9 +5,12 @@ let connection = require("./database/database");
 
 let categoriesController = require("./categories/CategoriesController");
 let articlesController = require("./articles/ArticlesController");
+let usersController = require ("./users/UsersController");
 
 let Article = require("./articles/Article");
 let Category = require("./categories/Category");
+let User = require("./users/User");
+
 
 
 //conexao com banco de dados
@@ -37,13 +40,15 @@ app.use(bodyParser.json());
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", usersController)
 
 
 app.get("/", (req, res) => {
     Article.findAll({
         order:[
             ['id', 'DESC']
-        ]
+        ],
+        limit: 4
     }).then(articles => {
         Category.findAll().then(categories => {
             res.render('index', {articles: articles, categories: categories});
