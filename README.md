@@ -43,6 +43,10 @@ Obs.: Aplicação em desenvolvimento
 
 - [Slugify](https://www.npmjs.com/package/slugify)
 
+- [Bcryptjs](https://www.npmjs.com/package/bcryptjs)
+
+- [Express-Session](https://www.npmjs.com/package/express-session)
+
   
   
   

@@ -1,15 +1,16 @@
-let express = require("express");
-let app = express();
-let bodyParser = require('body-parser');
-let connection = require("./database/database");
+const express = require("express");
+const app = express();
+const bodyParser = require('body-parser');
+const connection = require("./database/database");
+const session = require("express-session");
 
-let categoriesController = require("./categories/CategoriesController");
-let articlesController = require("./articles/ArticlesController");
-let usersController = require ("./users/UsersController");
+const categoriesController = require("./categories/CategoriesController");
+const articlesController = require("./articles/ArticlesController");
+const usersController = require ("./users/UsersController");
 
-let Article = require("./articles/Article");
-let Category = require("./categories/Category");
-let User = require("./users/User");
+const Article = require("./articles/Article");
+const Category = require("./categories/Category");
+const User = require("./users/User");
 
 
 
@@ -27,6 +28,15 @@ connection
 
 app.set("view engine", "ejs");
 
+// Sessions
+
+app.use(session({
+    secret: "qualquercoisa",
+    cookie: {
+        maxAge: 3000000
+    }
+}))
+
 //static
 
 app.use(express.static('public'));
@@ -40,8 +50,7 @@ app.use(bodyParser.json());
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
-app.use("/", usersController)
-
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
     Article.findAll({
