@@ -14,7 +14,7 @@
 
 ## :bookmark: Sobre o Projeto
 
-O **Blog GuiaPress** é um projeto Web, que simula um Blog, com o intuito de simular uma conexão entre o Backend(NodeJS) e o BD MySQL, utilizando rotas e renderização com HTML utilizando EJS.
+O **Blog GuiaPress** é um projeto Web, que simula um Blog, com o intuito de simular uma conexão entre do Frontend(EJS) e Backend(NodeJS) com o BD MySQL, utilizando rotas e renderização com HTML utilizando EJS.
 
 Obs.: Aplicação em desenvolvimento
 
